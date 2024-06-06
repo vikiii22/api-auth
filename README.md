@@ -1,0 +1,5 @@
+# ENV
+PORT = 3000
+
+BD_MONGO = ""
+MONGO_URI = ""
