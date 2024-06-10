@@ -5,7 +5,6 @@ async function connect(dbName) {
     const uri = process.env.MONGO_URI;
     const client = new MongoClient(uri);
 
-
     try {
         if (connected) {
             return client.db(dbName);
@@ -22,5 +21,5 @@ async function connect(dbName) {
 }
 
 module.exports = {
-    connectar: connect
+    connect
 }

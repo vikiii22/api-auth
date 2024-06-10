@@ -2,6 +2,7 @@ const express = require('express');
 
 const router = express.Router();
 const authRouter = require('./auth.routes');
+const appsRouter = require('./apps.routes');
 
 router.get('/', (req, res) => {
     res.json({
@@ -10,5 +11,6 @@ router.get('/', (req, res) => {
 });
 
 router.use('/auth', authRouter);
+router.use('/apps', appsRouter);
 
 module.exports = router;

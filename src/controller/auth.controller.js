@@ -1,15 +1,9 @@
 const axios = require('axios');
 const crypto = require('crypto');
-const { connectar } = require('../database/connection');
-
-
-async function createConnection() {
-    const db = await connectar(process.env.BD_MONGO);
-    return db.collection('users');
-}
+const { UsersDB } = require('../database/connectionsDB');
 
 async function login(req, res) {
-    const userDB = await createConnection();
+    const userDB = await UsersDB();
 
     let { email, password } = req.body;
     
