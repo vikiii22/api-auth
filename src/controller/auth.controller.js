@@ -12,7 +12,12 @@ async function login(req, res) {
     const userDB = await createConnection();
 
     let { email, password } = req.body;
-    password = md5(password);
+    
+    if (!email || !password) {
+        return res.status(400).json({
+            message: 'Email and password are required'
+        });
+    }
 
     try {
         const user = await userDB.findOne({ email, password }, { projection: { _id:0 } });
@@ -31,10 +36,6 @@ async function login(req, res) {
         console.error('Error trying to login', error);
     }
     
-}
-
-function md5(password) {
-    return crypto.createHash('md5').update(password).digest('hex');
 }
 
 module.exports = {
